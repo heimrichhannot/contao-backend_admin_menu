@@ -1,0 +1,8 @@
+<ul id="backend_admin_menu">
+	<li class="label">
+		<span class="logo"></span><?= $GLOBALS['TL_LANG']['MSC']['backendAdminMenu'] ?>
+		<ul class="actions">
+			<?= implode('', $this->actions) ?>
+		</ul>
+	</li>
+</ul>

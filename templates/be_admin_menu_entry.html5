@@ -1,0 +1,5 @@
+<li class="<?= $this->class ?>">
+	<a href="<?= $this->href ?>" title="<?= $GLOBALS['TL_LANG']['MSC'][$this->class][0] ?>">
+		<?= $GLOBALS['TL_LANG']['MSC'][$this->class][0] ?>
+	</a>
+</li>

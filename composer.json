@@ -1,0 +1,33 @@
+{
+    "name": "heimrichhannot/contao-backend_admin_menu",
+    "description":"Extends the contao backend with a menu containing useful shortcuts.",
+    "keywords":["contao", "avisota", "inline", "css", "module", "developer"],
+    "type": "contao-module",
+    "homepage":"https://github.com/heimrichhannot/contao-backend_admin_menu",
+    "license":"LGPL-3.0+",
+    "authors":[
+        {
+            "name":"Heimrich & Hannot",
+            "email":"digitales@heimrich-hannot.de",
+            "homepage":"http://www.heimrich-hannot.de",
+            "role":"Developer"
+        }
+    ],
+    "support":{
+        "issues":"https://github.com/heimrichhannot/contao-backend_admin_menu/issues"
+    },
+    "require": {
+        "contao/core": ">=3.2,<4-dev",
+        "bariew/phpquery": ">=1.0.2"
+    },
+    "autoload": {
+        "classmap": [""]
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/backend_admin_menu"
+            }
+        }
+    }
+}

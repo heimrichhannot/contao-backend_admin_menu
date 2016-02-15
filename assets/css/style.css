@@ -1,0 +1,39 @@
+#backend_admin_menu {
+	float: left;
+	position: relative;
+	cursor: pointer;
+}
+
+#backend_admin_menu .label {
+	text-align: left;
+}
+
+#backend_admin_menu .label span {
+	padding: 2px 0 3px 22px;
+	background: url('../../../backend_admin_menu/assets/img/icon.png') no-repeat left center;
+}
+
+#backend_admin_menu .actions {
+	background-color: white;
+	position: absolute;
+	top: 21px;
+	left: -12px;
+	opacity: 0;
+	min-width: 200px;
+	border: 1px solid #bbb;
+	border-top: 0;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	box-shadow: 0 5px 6px #ccc;
+	padding: 5px 12px;
+	z-index: 9999999;
+}
+
+#backend_admin_menu .actions li {
+	padding: 4px 0 5px 20px;
+	white-space: nowrap;
+}
+
+#backend_admin_menu .actions li.generate_internal_cache {
+	background: url('../../../backend_admin_menu/assets/img/generate_internal_cache.png') no-repeat left center;
+}
