@@ -1,5 +1,10 @@
 $(document).addEvent('domready', function() {
-	$('backend_admin_menu').getElements('li.label').each(function(elem) {
+	var $menu = $('backend_admin_menu');
+
+	if ($menu == null)
+		return;
+
+	$menu.getElements('li.label').each(function(elem) {
 		var list = elem.getElement('ul.actions');
 
 		elem.addEvents({
