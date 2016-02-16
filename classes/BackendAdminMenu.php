@@ -30,7 +30,7 @@ class BackendAdminMenu
 
 		// generate internal cache
 		$objAction = new BackendTemplate($this->strEntryTemplate);
-		$objAction->href = 'contao/main.php?do=maintenance&bic=1&rt={{request_token}}';
+		$objAction->href = 'contao/main.php?do=maintenance&bic=1&rt=' . \RequestToken::get();
 		$objAction->class = 'generate_internal_cache';
 		$arrActions[] = $objAction->parse();
 
