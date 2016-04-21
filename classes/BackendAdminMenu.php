@@ -51,7 +51,7 @@ class BackendAdminMenu
 
 		$objMenu->actions = $arrActions;
 
-		pq('#tmenu')->prepend($objMenu->parse());
+		$objDoc['#tmenu']->prepend($objMenu->parse());
 
 		return $objDoc->htmlOuter();
 	}
