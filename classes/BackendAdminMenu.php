@@ -27,26 +27,25 @@ class BackendAdminMenu
 
 		$objMenu = new BackendTemplate($this->strTemplate);
 		$arrActions = array();
+		$arrActiveActions = deserialize(\Config::get('backendAdminMenuActiveActions'), true);
 
-		// generate internal cache
-		$objAction = new BackendTemplate($this->strEntryTemplate);
-		$objAction->href = 'contao/main.php?do=maintenance&bic=1&rt=' . \RequestToken::get();
-		$objAction->class = 'generate_internal_cache';
-		$arrActions[] = $objAction->parse();
-
-		// HOOK: add custom menu entries
-		if (isset($GLOBALS['TL_HOOKS']['addBackendAdminMenuEntry']) && is_array($GLOBALS['TL_HOOKS']['addBackendAdminMenuEntry']))
+		foreach (empty($arrActiveActions) ? array_keys(\Config::get('backendAdminMenuActions')) : $arrActiveActions as $strAction)
 		{
-			foreach ($GLOBALS['TL_HOOKS']['addBackendAdminMenuEntry'] as $callback)
-			{
-				$this->import($callback[0]);
-				$strAction = $this->$callback[0]->$callback[1]($this->strEntryTemplate, $this);
+			$arrActionData = $GLOBALS['TL_CONFIG']['backendAdminMenuActions'][$strAction];
 
-				if ($strAction !== false)
-				{
-					$arrActions[][] = $strAction;
-				}
+			$objAction = new BackendTemplate($this->strEntryTemplate);
+			$objAction->setData($arrActionData);
+
+			// href = callback?
+			if (is_array($arrActionData['href']) || is_callable($arrActionData['href'])) {
+				$strClass  = $arrActionData['href'][0];
+				$strMethod = $arrActionData['href'][1];
+				$objInstance = \Controller::importStatic($strClass);
+				$objAction->href = $objInstance->$strMethod();
 			}
+
+			$objAction->class = $strAction;
+			$arrActions[] = $objAction->parse();
 		}
 
 		$objMenu->actions = $arrActions;
@@ -54,5 +53,11 @@ class BackendAdminMenu
 		$objDoc['#tmenu']->prepend($objMenu->parse());
 
 		return $objDoc->htmlOuter();
+	}
+
+	public static function getGenerateInternalCacheAction()
+	{
+		\RequestToken::initialize();
+		return 'contao/main.php?do=maintenance&bic=1&rt=' . \RequestToken::get();
 	}
 }

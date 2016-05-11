@@ -26,14 +26,10 @@
 	border-bottom-right-radius: 3px;
 	box-shadow: 0 5px 6px #ccc;
 	padding: 5px 12px;
-	z-index: 9999999;
+	z-index: 1;
 }
 
 #backend_admin_menu .actions li {
 	padding: 4px 0 5px 20px;
 	white-space: nowrap;
-}
-
-#backend_admin_menu .actions li.generate_internal_cache {
-	background: url('../../../backend_admin_menu/assets/img/generate_internal_cache.png') no-repeat left center;
 }

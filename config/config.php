@@ -15,6 +15,24 @@ $GLOBALS['TL_HOOKS']['parseBackendTemplate']['addBackendAdminMenu'] =
 	array('HeimrichHannot\BackendAdminMenu\BackendAdminMenu', 'addBackendAdminMenu');
 
 /**
+ * Actions
+ */
+$GLOBALS['TL_CONFIG']['backendAdminMenuActions'] = array(
+	'generate_internal_cache' => array(
+		'href' => array('HeimrichHannot\BackendAdminMenu\BackendAdminMenu', 'getGenerateInternalCacheAction'),
+		'icon' => 'system/modules/backend_admin_menu/assets/img/generate_internal_cache.png'
+	),
+	'composer' => array(
+		'href' => 'contao/main.php?do=composer',
+		'icon' => 'system/modules/!composer/assets/images/icon.png'
+	),
+	'update_database' => array(
+		'href' => 'contao/main.php?do=composer&update=database',
+		'icon' => 'system/modules/!composer/assets/images/database_update.png'
+	)
+);
+
+/**
  * JS
  */
 if (TL_MODE == 'BE')

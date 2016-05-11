@@ -1,4 +1,4 @@
-<li class="<?= $this->class ?>">
+<li class="<?= $this->class ?>" style="background: url(<?= $this->icon ?>) no-repeat left center;">
 	<a href="<?= $this->href ?>" title="<?= $GLOBALS['TL_LANG']['MSC'][$this->class][1] ?>">
 		<?= $GLOBALS['TL_LANG']['MSC'][$this->class][0] ?>
 	</a>
