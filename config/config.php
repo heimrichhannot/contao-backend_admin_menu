@@ -29,6 +29,10 @@ $GLOBALS['TL_CONFIG']['backendAdminMenuActions'] = array(
 	'update_database' => array(
 		'href' => 'contao/main.php?do=composer&update=database',
 		'icon' => 'system/modules/!composer/assets/images/database_update.png'
+	),
+	'autoload_creator' => array(
+		'href' => 'contao/main.php?do=autoload',
+		'icon' => 'system/modules/devtools/assets/autoload.gif'
 	)
 );
 

@@ -13,6 +13,7 @@ Extends the contao backend with a menu containing useful shortcuts.
 - regenerate the internal cache
 - open composer
 - open the page for updating the database
+- open autoload creator
 
 ## Technical instructions
 
