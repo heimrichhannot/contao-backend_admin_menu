@@ -12,6 +12,7 @@
 namespace HeimrichHannot\BackendAdminMenu;
 
 use Contao\BackendTemplate;
+use HeimrichHannot\Haste\Util\StringUtil;
 
 class BackendAdminMenu
 {
@@ -23,7 +24,9 @@ class BackendAdminMenu
 		if ($strTemplate != 'be_main' || !\BackendUser::getInstance()->isAdmin)
 			return $strBuffer;
 
-		$objDoc = \phpQuery::newDocumentHTML($strBuffer);
+		// replace the scripts before processing -> https://code.google.com/archive/p/phpquery/issues/212
+		$arrScripts = StringUtil::replaceScripts($strBuffer);
+		$objDoc = \phpQuery::newDocumentHTML($arrScripts['content']);
 
 		$objMenu = new BackendTemplate($this->strTemplate);
 		$arrActions = array();
@@ -52,7 +55,7 @@ class BackendAdminMenu
 
 		$objDoc['#tmenu']->prepend($objMenu->parse());
 
-		return $objDoc->htmlOuter();
+		return StringUtil::unreplaceScripts($objDoc->htmlOuter(), $arrScripts['scripts']);
 	}
 
 	public static function getGenerateInternalCacheAction()

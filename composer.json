@@ -18,7 +18,8 @@
     },
     "require": {
         "contao/core": ">=3.2,<4-dev",
-        "bariew/phpquery": ">=1.0.2"
+		"bariew/phpquery": ">=1.0.2",
+		"heimrichhannot/contao-haste_plus": ">=1.3.47"
     },
     "autoload": {
         "classmap": [""]
