@@ -26,6 +26,7 @@ class BackendAdminMenu
 
 		// replace the scripts before processing -> https://code.google.com/archive/p/phpquery/issues/212
 		$arrScripts = StringUtil::replaceScripts($strBuffer);
+
 		$objDoc = \phpQuery::newDocumentHTML($arrScripts['content']);
 
 		$objMenu = new BackendTemplate($this->strTemplate);
@@ -55,7 +56,12 @@ class BackendAdminMenu
 
 		$objDoc['#tmenu']->prepend($objMenu->parse());
 
-		return StringUtil::unreplaceScripts($objDoc->htmlOuter(), $arrScripts['scripts']);
+		$strBuffer = StringUtil::unreplaceScripts($objDoc->htmlOuter(), $arrScripts['scripts']);
+
+		// avoid double escapings introduced by phpquery :-(
+		$strBuffer = preg_replace('@&amp;([^;]{2,4};)@i', '&$1', $strBuffer);
+
+		return $strBuffer;
 	}
 
 	public static function getGenerateInternalCacheAction()

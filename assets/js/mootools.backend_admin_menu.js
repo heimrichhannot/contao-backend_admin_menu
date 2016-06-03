@@ -7,6 +7,8 @@ $(document).addEvent('domready', function() {
 	$menu.getElements('li.label').each(function(elem) {
 		var list = elem.getElement('ul.actions');
 
+		list.set('tween', {duration: 200});
+
 		elem.addEvents({
 			'mouseenter' : function(){
 				$('header').setStyle('border-bottom-left-radius', '0');
