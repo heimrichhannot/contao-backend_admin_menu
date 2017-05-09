@@ -17,7 +17,8 @@
         "issues":"https://github.com/heimrichhannot/contao-backend_admin_menu/issues"
     },
     "require": {
-        "contao/core": ">=3.2,<4-dev",
+        "php": "~5.4 || ~7.0",
+        "contao/core-bundle": "^3.5.1 || ~4.1",
 		"bariew/phpquery": ">=1.0.2",
 		"heimrichhannot/contao-haste_plus": ">=1.3.47"
     },

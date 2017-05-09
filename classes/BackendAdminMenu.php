@@ -45,7 +45,7 @@ class BackendAdminMenu
 				$strClass  = $arrActionData['href'][0];
 				$strMethod = $arrActionData['href'][1];
 				$objInstance = \Controller::importStatic($strClass);
-				$objAction->href = $objInstance->$strMethod();
+				$objAction->href = $objInstance->{$strMethod}();
 			}
 
 			$objAction->class = $strAction;
